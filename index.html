@@ -1,27 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Quiz App</title>
+    <title>Premium Quiz Master</title>
 </head>
+
 <body>
-    <div class="app">
-        <h1>Quiz time</h1>
-        <div class="quiz">
-            <h2 id="question">Question goes here</h2>
-            <div id="answer-buttons">
-                <button class="btn">Answer 1</button>
-                <button class="btn">Answer 2</button>
-                <button class="btn">Answer 3</button>
-                <button class="btn">Answer 4</button>
+    <div class="background-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+    </div>
+
+    <!-- Authentication Section (Visible by Default) -->
+    <div id="auth-container" class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="logo-icon"><i class="fas fa-brain"></i></div>
+                <h1 id="auth-title">Welcome Back</h1>
+                <p id="auth-desc">Login to start your premium quiz journey</p>
             </div>
-            <button id="next-btn">Next</button>
+
+            <form id="auth-form">
+                <div id="signup-fields" style="display: none;">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="user-name" placeholder="Full Name">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="user-email" placeholder="Email" required>
+                </div>
+
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="user-password" placeholder="Password" required>
+                </div>
+
+                <button type="submit" id="auth-submit-btn" class="auth-btn">
+                    <span>Login</span> <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <p id="toggle-auth-text">Don't have an account? <span id="toggle-auth">Sign Up</span></p>
+            </div>
+
+            <div class="divider"><span>OR</span></div>
+
+            <button id="skip-btn" class="skip-btn">Continue as Guest <i class="fas fa-user-secret"></i></button>
         </div>
-    </div> 
+    </div>
 
-    <script src="script.js"></script>
+    <!-- Main Quiz App (Hidden initially) -->
+    <div class="app" id="quiz-app" style="display: none;">
+        <header class="quiz-header">
+            <h1 class="logo-text"><i class="fas fa-brain"></i> Quiz Master</h1>
+            <div class="header-actions">
+                <div id="user-info" class="user-info-mini">
+                    <span id="display-name">Player</span>
+                </div>
+                <button id="logout-btn" class="icon-btn" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="quiz-content">
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <div class="quiz-body">
+                <h2 id="question">Preparing questions...</h2>
+                <div id="answer-buttons">
+                    <!-- Buttons will be added here -->
+                </div>
+                <div class="footer-controls">
+                    <button id="next-btn">Next Question <i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script type="module" src="firebase.config.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
-</html>
 
+</html>
